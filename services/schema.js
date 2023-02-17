@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Joi = require("Joi");
+const Joi = require("joi");
 
 const message = new Schema({
   name: {
