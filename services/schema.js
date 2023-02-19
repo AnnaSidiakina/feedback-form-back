@@ -2,20 +2,26 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Joi = require("joi");
 
-const message = new Schema({
-  name: {
-    type: String,
-    required: [true, "Set name for message"],
+const message = new Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Set name for message"],
+    },
+    email: {
+      type: String,
+      required: [true, "Set email for message"],
+    },
+    message: {
+      type: String,
+      required: [true, "Set message"],
+    },
   },
-  email: {
-    type: String,
-    required: [true, "Set email for message"],
-  },
-  message: {
-    type: String,
-    required: [true, "Set message"],
-  },
-});
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
 
 const handleError = (error, data, next) => {
   const { name, code } = error;

@@ -1,0 +1,74 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Feedback form API with Swagger",
+    "description": "This is a simple API",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://feedback-form-back-production.up.railway.app"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Feedback",
+      "description": "API for feedback"
+    }
+  ],
+  "paths": {
+    "/api/messages": {
+      "post": {
+        "tags": ["Feedback"],
+        "summary": "add feedback",
+        "description": "Add feedback",
+        "requestBody": {
+          "description": "Feedback item to add",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Feedback"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "item created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Feedback": {
+        "required": ["email", "message", "name"],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Widget Adapter"
+          },
+          "email": {
+            "type": "string",
+            "example": "anna@mail.com"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
